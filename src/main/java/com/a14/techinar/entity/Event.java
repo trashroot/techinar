@@ -44,6 +44,16 @@ public class Event {
 	
 	private Integer approvedBy;
 	
+	private Integer isDeleted;
+	
+	public Integer getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Integer isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
 	public Event() {
 		
 	}

@@ -67,4 +67,19 @@ public class EventService {
 	public Event updateEvent(Event event) {
 		return evRepo.save(event);
 	}
+	
+	public void deleteEvent(int id) {
+		Event e = evRepo.findById(id).orElseThrow(() -> new ResourceNotFound("Event not found."));
+		System.out.println(e);
+		evRepo.deleteEvent(id);
+	}
+	
+	public List<String> getCountry(){
+		List<String> countries = evRepo.findDistinctCountry();
+		if (countries.isEmpty()) {
+			throw new ResourceNotFound("No event found.");
+		}
+		
+		return countries;
+	}
 }

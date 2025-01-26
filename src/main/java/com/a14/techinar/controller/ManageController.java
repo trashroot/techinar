@@ -70,7 +70,7 @@ public class ManageController {
 		}
 		
 		Event eve = evService.addEvent(event);
-		return ResponseEntity.ok(new ApiResponse(MESSAGE, MESSAGE.getStatus()));
+		return ResponseEntity.ok(new ApiResponse(MESSAGE, MESSAGE.getStatus(), eve));
 	}
 
 	@PutMapping("/editEvent")
@@ -87,4 +87,15 @@ public class ManageController {
 		Event eve = evService.updateEvent(event);
 		return ResponseEntity.ok(new ApiResponse(MESSAGE, MESSAGE.getStatus(), eve));
 	}
+	
+//	@DeleteMapping("event/{id}")
+//	public ResponseEntity<?> deleteEvent(@PathVariable("id") int id) {
+//		try {
+//			evService.deleteEvent(id);
+//			return ResponseEntity.ok(new ApiResponse(MESSAGE, MESSAGE.getStatus()));
+//		} catch (Exception e) {
+//			System.out.println(e+"<===========");
+//			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ApiResponse(ResponseStatus.FAIL, "Event could not be deleted."));
+//		}
+//	}
 }

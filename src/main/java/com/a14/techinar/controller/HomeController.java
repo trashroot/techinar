@@ -35,7 +35,16 @@ public class HomeController {
 			List<Event> event = evService.getEventById(eventId);
 			return ResponseEntity.ok(new ApiResponse(MESSAGE, MESSAGE.getStatus(), event));
 		} catch (Exception e) {
-			
+
+			return ResponseEntity.ok(new ApiResponse(MESSAGE, MESSAGE.getStatus(), e.getMessage()));
+		}
+	}
+
+	@GetMapping("/country")
+	public ResponseEntity<ApiResponse> getCountries() {
+		try {
+			return ResponseEntity.ok(new ApiResponse(MESSAGE, MESSAGE.getStatus(), evService.getCountry()));
+		} catch (Exception e) {
 			return ResponseEntity.ok(new ApiResponse(MESSAGE, MESSAGE.getStatus(), e.getMessage()));
 		}
 	}
